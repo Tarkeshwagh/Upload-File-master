@@ -1,0 +1,46 @@
+<% include ./partials/header.ejs %>
+
+<div class="container">
+    <div class="row">
+        <h1 class="lead">Candidate Data</h1>
+        <div id="table" class="table-responsive table-editable">
+            <table id="Candidate" class="table table-striped table-hover table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone no</th>
+                    <th>CTC</th>
+                    <th>Candidate experience</th>
+                    <th>Company</th>
+                    <th>location</th>
+                    <th>linked In</th>
+                    <th>created_date</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <% candidate.forEach(function(candidate){ %>
+                    <tr>
+                        
+                        <td contenteditable="true"><%= candidate.name %></td>
+                        <td contenteditable="true"><%= candidate.email_id %></td>
+                        <td contenteditable="true"><%= candidate.phone_number %></td>
+                        <td contenteditable="true"><%= candidate.ctc.value %></td>
+                        <td contenteditable="true"><%= candidate.candidateExperience %></td>
+                        <td contenteditable="true"><%= candidate.company.name %></td>
+                        <td contenteditable="true"><%= candidate.location.city %></td>
+                        <td contenteditable="true"><%= candidate.linkedIn %></td>
+                        <td contenteditable="true"><%= candidate.created_date %></td>
+                        
+                        <td>
+                            <form action="/upload/candidate/<%= candidate._id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button class="btn btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer.ejs %>
